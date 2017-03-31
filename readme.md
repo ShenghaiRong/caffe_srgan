@@ -81,7 +81,7 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 Sub-Pixel Convolutional Neural Network"](http://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Shi_Real-Time_Single_Image_CVPR_2016_paper.pdf) , I implementated the pixelshffuler_layer, which is added to reshape_layer.hpp && .cpp . If you want to use pixelshuffler_layer by yourself , just following this:
 ```
 layer{
-	name: "psx2_1"
+    name: "psx2_1"
     type: "Reshape"
     bottom: "conv_g35"
     top: "psx2_1"
