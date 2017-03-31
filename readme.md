@@ -52,11 +52,11 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 
 |Input|Bicubic|SRResNet-MSE(mine)|Ground True|
 |:---:|:---:|:---:|
-|![Alt text](./SRGAN/Set5_sr/baby_LR.bmp)|![Alt text](./baby_bicubicx4.bmp)|![Alt text](./baby_srres_75s.bmp)|![Alt text](./baby_GT.bmp)|
-|![Alt text](./bird_LR.bmp)|![Alt text](./bird_bicubicx4.bmp)|![Alt text](./bird_srres_75s.bmp)|![Alt text](./bird_GT.bmp)|
-|![Alt text](./butterfly_LR.bmp)|![Alt text](./butterfly_bicubicx4.bmp)|![Alt text](./butterfly_srres_75s.bmp)|![Alt text](./butterfly_GT.bmp)|
-|![Alt text](./head_LR.bmp)|![Alt text](./head_bicubic4.bmp)|![Alt text](./head_srres_75s.bmp)|![Alt text](./head_GT.bmp)|
-|![Alt text](./woman_LR.bmp)|![Alt text](./woman_bicubicx4.bmp)|![Alt text](./woman_srres_75s.bmp)|![Alt text](./woman_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/baby_LR.bmp)|![Alt text](./SRGAN/Set5_sr/baby_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/baby_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/baby_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/bird_LR.bmp)|![Alt text](./SRGAN/Set5_sr/bird_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/bird_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/bird_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/butterfly_LR.bmp)|![Alt text](./SRGAN/Set5_sr/butterfly_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/butterfly_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/butterfly_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/head_LR.bmp)|![Alt text](./SRGAN/Set5_sr/head_bicubic4.bmp)|![Alt text](./SRGAN/Set5_sr/head_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/head_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/woman_LR.bmp)|![Alt text](./SRGAN/Set5_sr/woman_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/woman_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/woman_GT.bmp)|
 
 
 ## Notes
