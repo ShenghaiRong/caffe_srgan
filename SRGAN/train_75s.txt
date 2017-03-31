@@ -1,0 +1,15 @@
+/data9/rongsh/train_75s_8b_1.h5
+/data9/rongsh/train_75s_8b_2.h5
+/data9/rongsh/train_75s_8b_3.h5
+/data9/rongsh/train_75s_8b_4.h5
+/data9/rongsh/train_75s_8b_5.h5
+/data9/rongsh/train_75s_8b_6.h5
+/data9/rongsh/train_75s_8b_7.h5
+/data9/rongsh/train_75s_8b_8.h5
+/data9/rongsh/train_75s_8b_9.h5
+/data9/rongsh/train_75s_8b_10.h5
+/data9/rongsh/train_75s_8b_11.h5
+/data9/rongsh/train_75s_8b_12.h5
+/data9/rongsh/train_75s_8b_13.h5
+/data9/rongsh/train_75s_8b_14.h5
+/data9/rongsh/train_75s_8b_15.h5

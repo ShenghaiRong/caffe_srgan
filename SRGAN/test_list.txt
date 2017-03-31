@@ -1,0 +1,5 @@
+baby_LR.bmp 1
+bird_LR.bmp 1
+butterfly_LR.bmp 1
+head_LR.bmp 1
+woman_LR.bmp 1

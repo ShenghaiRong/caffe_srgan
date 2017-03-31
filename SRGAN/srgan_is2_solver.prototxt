@@ -1,0 +1,24 @@
+# The train/test net protocol buffer definition
+net: "examples/SRGAN/srgan_mse_is2.prototxt"
+test_iter: 7
+test_interval: 500
+# The base learning rate, momentum and the weight decay of the network.
+type: "Adam"
+base_lr: 0.0001
+weight_decay: 0.0001
+momentum: 0.9
+# The learning rate policy
+lr_policy: "step"
+gamma: 0.1
+stepsize: 45000
+# Display every 100 iterations
+display: 100
+# The maximum number of iterations
+max_iter: 90000
+gan_solver: true
+iter_size: 2
+# snapshot intermediate results
+snapshot: 15000
+snapshot_prefix: "examples/SRGAN/Model/SRGAN_75s_is2"
+# solver mode: CPU or GPU
+solver_mode: GPU
