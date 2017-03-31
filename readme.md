@@ -11,7 +11,7 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
 * ubuntu 14.04
 * pycaffe
 
-####2. compute\_psnr\_ssim:
+#### 2. compute\_psnr\_ssim:
 * windows 10
 * matlab
 
@@ -52,7 +52,7 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 
 |Input|Bicubic|SRResNet-MSE(mine)|Ground True|
 |:---:|:---:|:---:|
-|![Alt text](./baby_LR.bmp)|![Alt text](./baby_bicubicx4.bmp)|![Alt text](./baby_srres_75s.bmp)|![Alt text](./baby_GT.bmp)|
+|![Alt text](./SRGAN/Set5_sr/baby_LR.bmp)|![Alt text](./baby_bicubicx4.bmp)|![Alt text](./baby_srres_75s.bmp)|![Alt text](./baby_GT.bmp)|
 |![Alt text](./bird_LR.bmp)|![Alt text](./bird_bicubicx4.bmp)|![Alt text](./bird_srres_75s.bmp)|![Alt text](./bird_GT.bmp)|
 |![Alt text](./butterfly_LR.bmp)|![Alt text](./butterfly_bicubicx4.bmp)|![Alt text](./butterfly_srres_75s.bmp)|![Alt text](./butterfly_GT.bmp)|
 |![Alt text](./head_LR.bmp)|![Alt text](./head_bicubic4.bmp)|![Alt text](./head_srres_75s.bmp)|![Alt text](./head_GT.bmp)|
@@ -82,10 +82,10 @@ Sub-Pixel Convolutional Neural Network"](http://www.cv-foundation.org/openaccess
 
 ## Plans
 * [ ] Finetuning the SRResNet-MSE model.
-* [ ]Properly train the SRGAN-MSE model.
-* [ ]Train the SRResNet-VGG networks.
-* [ ]Train the SRGAN-VGG networks.
-* [ ]Improve docs & instructions
+* [ ] Properly train the SRGAN-MSE model.
+* [ ] Train the SRResNet-VGG networks.
+* [ ] Train the SRGAN-VGG networks.
+* [ ] Improve docs & instructions
 
 
 
