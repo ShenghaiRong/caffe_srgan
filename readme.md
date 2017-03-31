@@ -18,13 +18,11 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
 ## Usage
 1. Overload or add the caffe\_gan/caffe.proto, solver.cpp and  caffe\_gan/include/*_layer.hpp and caffe\_gan/src/*_layer.cpp *_layer.cu  to your caffe
 
-2.
- ```
+2. ```
  cd caffe && make clean && make all && make pycaffe 
  ```
 
-3. 
- ```
+3.  ```
  cp -r SRGAN caffe/examples/ 
  ```
  
@@ -54,7 +52,7 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
     ```
 ## Benchmarks
 Currently, the SRResNet-MSE worked well ,but it is still training and tuning. 
- *Factor 4 : Set5*
+ > *Factor 4 : Set5*
 
  |Benchmarks|SRResNet-MSE(official)|SRResNet-MSE(mine)|
  |:---:|:---:|:---:|
