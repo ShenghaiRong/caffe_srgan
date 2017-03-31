@@ -50,7 +50,7 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 ## Results
 *Factor 4 : Set5*
 
-|Bicubic|SRResNet-MSE(mine)|Ground True|
+|Bicubic|SRResNet-MSE(mine)|Ground Truth|
 |:---:|:---:|:---:|
 |![Alt text](./SRGAN/Set5_sr/baby_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/baby_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/baby_GT.bmp)|
 |![Alt text](./SRGAN/Set5_sr/bird_bicubicx4.bmp)|![Alt text](./SRGAN/Set5_sr/bird_srres_75s.bmp)|![Alt text](./SRGAN/Set5_sr/bird_GT.bmp)|
