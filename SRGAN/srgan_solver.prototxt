@@ -1,7 +1,7 @@
 # The train/test net protocol buffer definition
 net: "examples/SRGAN/srgan_mse.prototxt"
 test_iter: 7
-test_interval: 500
+test_interval: 90000  
 # The base learning rate, momentum and the weight decay of the network.
 type: "Adam"
 base_lr: 0.0001
@@ -17,7 +17,7 @@ display: 101
 max_iter: 90000
 gan_solver: true
 # snapshot intermediate results
-snapshot: 15000
+snapshot: 10000
 snapshot_prefix: "examples/SRGAN/Model/SRGAN_75s"
 # solver mode: CPU or GPU
 solver_mode: GPU
