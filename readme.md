@@ -28,7 +28,7 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
  cp -r SRGAN caffe/examples/ 
  ```
  
-4. Preparing training data: crop images of the ImageNet dataset into 75*75*3 sub-imgs and save as .h5  format
+4. Preparing training data: crop images of the ImageNet dataset into 75*75*3 sub-imgs and save as .h5  format（my training set: 192000x3x75x75）
    * My implementation is in the win10 matlab : run utils/Generate_data/mygenerate_sr_trainx4.m
 
 5. Preparing testing data: crop images of the Set5 to 75*75*3 sub-imgs and save as .h5 format
@@ -58,8 +58,8 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 
  |Benchmarks|SRResNet-MSE(official)|SRResNet-MSE(mine)|
  |:---:|:---:|:---:|
- |PSNR|32.05|31.26|
- |SSIM|0.9019|0.8782|
+ |PSNR|32.05|31.29|
+ |SSIM|0.9019|0.8794|
 
 ## Results
 *Factor 4 : Set5*
