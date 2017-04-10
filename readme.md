@@ -16,7 +16,7 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
 * matlab
 
 ## Usage
-1. Overwrite or add the caffe\_gan/caffe.proto, solver.cpp and  caffe\_gan/include/*_layer.hpp and caffe\_gan/src/*_layer.cpp *_layer.cu  to your caffe
+1. Overload or add the caffe\_gan/caffe.proto, solver.cpp and  caffe\_gan/include/*_layer.hpp and caffe\_gan/src/*_layer.cpp *_layer.cu  to your caffe
 
 2. 
 ```
