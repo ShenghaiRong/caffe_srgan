@@ -58,8 +58,8 @@ Currently, the SRResNet-MSE worked well ,but it is still training and tuning.
 
  |Benchmarks|SRResNet-MSE(official)|SRResNet-MSE(mine)|
  |:---:|:---:|:---:|
- |PSNR|32.05|31.29|
- |SSIM|0.9019|0.8794|
+ |PSNR|32.05|31.40|
+ |SSIM|0.9019|0.8813|
 
 ## Results
 *Factor 4 : Set5*
