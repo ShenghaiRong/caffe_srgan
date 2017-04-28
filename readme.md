@@ -53,7 +53,10 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
     cd yourpath/caffe/examples/SRGAN/ && python srres-deploy.py 
    ```
 ## Benchmarks
-Currently, the SRResNet-MSE worked well ,but it is still training and tuning. 
+Currently, the SRResNet-MSE worked well ,but it is still training and tuning. My results of SRGAN-MSE are
+
+weird, and I don't know what's going wrong with it...
+
  > *Factor 4 : Set5*
 
 |    Model/Benchmarks    | PSNR  |  SSIM  |
