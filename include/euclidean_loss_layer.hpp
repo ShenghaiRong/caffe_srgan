@@ -41,7 +41,7 @@ template <typename Dtype>
 class EuclideanLossLayer : public LossLayer<Dtype> {
  public:
   explicit EuclideanLossLayer(const LayerParameter& param)
-      : LossLayer<Dtype>(param), diff_(),gan_mode_(1) {}
+      : LossLayer<Dtype>(param), diff_() {}
   virtual void Reshape(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
 
@@ -100,8 +100,6 @@ class EuclideanLossLayer : public LossLayer<Dtype> {
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom);
 
   Blob<Dtype> diff_;
-  int gan_mode_;
-  int iter_size_;
 };
 
 }  // namespace caffe

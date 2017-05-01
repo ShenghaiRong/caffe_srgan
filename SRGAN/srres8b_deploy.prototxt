@@ -8,7 +8,7 @@ layer {
     top: "label"
     image_data_param {
         source: "test_list.txt"
-        root_folder: "Set5_sr/"
+# root_folder: "Set5_sr/"
         is_color: true
     }
     include: {

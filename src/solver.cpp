@@ -199,7 +199,6 @@ void Solver<Dtype>::Step(int iters) {
   losses_.clear();
   smoothed_loss_ = 0;
   Dtype loss_buff = 0;
-  int gan_iter_times = 2;
 
   while (iter_ < stop_iter) {
     // zero-init the params
@@ -221,30 +220,26 @@ void Solver<Dtype>::Step(int iters) {
     net_->set_debug_info(display && param_.debug_info());
     // accumulate the loss and gradient
     Dtype loss = 0;
-    if (gan_solver) {
-      for (int i = 0; i < (gan_iter_times* param_.iter_size()); ++i) {
-        loss += net_->ForwardBackward();
-      }
-      gan_iter_times = gan_iter_times == 2 ? 1 : 2;
-    } else {
-      for (int i = 0; i < param_.iter_size(); ++i) {
-        loss += net_->ForwardBackward();
-      }
+    for (int i = 0; i < param_.iter_size(); ++i) {
+      loss += net_->ForwardBackward();
     }
     loss /= param_.iter_size();
-
     // average the loss across iterations for smoothed reporting
     UpdateSmoothedLoss(loss, start_iter, average_loss);
     if (display) {
       LOG_IF(INFO, Caffe::root_solver()) << "Iteration " << iter_
           << ", loss = " << smoothed_loss_;
       if (gan_solver) {
-        // old : gan_iter_times == 1
-        if (gan_iter_times == 2 && iter_ != 0) {
+        if (iter_ != 0 && (iter_ % 2) == 0) {
+          LOG_IF(INFO, Caffe::root_solver()) << "    dis_loss =  "  << loss;
+          LOG_IF(INFO, Caffe::root_solver()) << "    gen_loss =  "  << loss_buff;
+        }
+        else if((iter_ % 2) != 0)
+        {
           LOG_IF(INFO, Caffe::root_solver()) << "    dis_loss =  "  << loss_buff;
           LOG_IF(INFO, Caffe::root_solver()) << "    gen_loss =  "  << loss;
         }
-      }
+      } 
       const vector<Blob<Dtype>*>& result = net_->output_blobs();
       int score_index = 0;
       for (int j = 0; j < result.size(); ++j) {

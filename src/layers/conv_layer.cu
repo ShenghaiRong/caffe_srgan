@@ -29,11 +29,10 @@ void ConvolutionLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
   const Dtype* weight = this->blobs_[0]->gpu_data();
   Dtype* weight_diff = this->blobs_[0]->mutable_gpu_diff();
   bool update_weight = !this->layer_param_.convolution_param().weight_fixed();
-  const int iter_size = this->layer_param_.convolution_param().iter_size();
-  if (this->layer_param_.convolution_param().gen_mode() && this->gan_mode_ <= (2* iter_size)) {
+  if (this->layer_param_.convolution_param().gen_mode() && this->gan_mode_ != 2 ) {
 	update_weight = false;
   }
-  if (this->layer_param_.convolution_param().dis_mode() && this->gan_mode_ > (2* iter_size)) {
+  if (this->layer_param_.convolution_param().dis_mode() && this->gan_mode_ == 2) {
 	update_weight = false;
   }
   for (int i = 0; i < top.size(); ++i) {
@@ -63,7 +62,7 @@ void ConvolutionLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
     }
   }
   // update gan_mode_
-  this->gan_mode_ = this->gan_mode_ == (3* iter_size) ? 1 : this->gan_mode_ + 1;
+  this->gan_mode_ = this->gan_mode_ == 2 ? 1 : this->gan_mode_ + 1;
 }
 
 INSTANTIATE_LAYER_GPU_FUNCS(ConvolutionLayer);

@@ -38,10 +38,10 @@ void InnerProductLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
     const Dtype* top_diff = top[0]->gpu_diff();
     const Dtype* bottom_data = bottom[0]->gpu_data();
 	update_weight_ = true;
-    if (this->layer_param_.inner_product_param().gen_mode() && gan_mode_ <=(2* iter_size_)) {
+    if (this->layer_param_.inner_product_param().gen_mode() && gan_mode_ != 2) {
   	update_weight_ = false;
     }
-    if (this->layer_param_.inner_product_param().dis_mode() && gan_mode_ >(2* iter_size_)) {
+    if (this->layer_param_.inner_product_param().dis_mode() && gan_mode_ == 2) {
   	update_weight_ = false;
     }
     // Gradient with respect to weight
@@ -84,7 +84,7 @@ void InnerProductLayer<Dtype>::Backward_gpu(const vector<Blob<Dtype>*>& top,
     }
   }
   // update gan_mode_
-  gan_mode_ = gan_mode_ == (3* iter_size_) ? 1 : gan_mode_ + 1;
+  gan_mode_ = gan_mode_ == 2 ? 1 : gan_mode_ + 1;
 }
 
 INSTANTIATE_LAYER_GPU_FUNCS(InnerProductLayer);

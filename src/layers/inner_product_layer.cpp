@@ -13,7 +13,6 @@ void InnerProductLayer<Dtype>::LayerSetUp(const vector<Blob<Dtype>*>& bottom,
   bias_term_ = this->layer_param_.inner_product_param().bias_term();
   transpose_ = this->layer_param_.inner_product_param().transpose();
   update_weight_ = !this->layer_param_.inner_product_param().weight_fixed();
-  iter_size_ = this->layer_param_.inner_product_param().iter_size();
   N_ = num_output;
   gan_mode_ = 1;
   const int axis = bottom[0]->CanonicalAxisIndex(
@@ -107,10 +106,10 @@ void InnerProductLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
     const Dtype* top_diff = top[0]->cpu_diff();
     const Dtype* bottom_data = bottom[0]->cpu_data();
 	update_weight_ = true;
-    if (this->layer_param_.inner_product_param().gen_mode() && gan_mode_ <= (2* iter_size_)) {
+    if (this->layer_param_.inner_product_param().gen_mode() && gan_mode_ != 2) {
   	update_weight_ = false;
     }
-    if (this->layer_param_.inner_product_param().dis_mode() && gan_mode_ >(2* iter_size_)) {
+    if (this->layer_param_.inner_product_param().dis_mode() && gan_mode_ == 2) {
   	update_weight_ = false;
     }
     // Gradient with respect to weight
@@ -154,7 +153,7 @@ void InnerProductLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
   }
 
   // update gan_mode_
-  gan_mode_ = gan_mode_ == (3* iter_size_) ? 1 : gan_mode_ + 1;
+  gan_mode_ = gan_mode_ == 2 ? 1 : gan_mode_ + 1;
 }
 
 #ifdef CPU_ONLY

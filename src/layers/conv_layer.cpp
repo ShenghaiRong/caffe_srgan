@@ -43,12 +43,12 @@ template <typename Dtype>
 void ConvolutionLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
       const vector<bool>& propagate_down, const vector<Blob<Dtype>*>& bottom) {
   const Dtype* weight = this->blobs_[0]->cpu_data();
+  //default update_weight =true
   bool update_weight = !this->layer_param_.convolution_param().weight_fixed();
-  const int iter_size = this->layer_param_.convolution_param().iter_size();
-  if (this->layer_param_.convolution_param().gen_mode() && this->gan_mode_ <= (2 * iter_size)) {
+  if (this->layer_param_.convolution_param().gen_mode() && this->gan_mode_ != 2) {
 	update_weight = false;
   }
-  if (this->layer_param_.convolution_param().dis_mode() && this->gan_mode_ > (2* iter_size)) {
+  if (this->layer_param_.convolution_param().dis_mode() && this->gan_mode_ == 2) {
 	update_weight = false;
   }
   Dtype* weight_diff = this->blobs_[0]->mutable_cpu_diff();
@@ -79,7 +79,7 @@ void ConvolutionLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
     }
   }
   // update gan_mode_
-  this->gan_mode_ = this->gan_mode_ == (3* iter_size) ? 1 : this->gan_mode_ + 1;
+  this->gan_mode_ = this->gan_mode_ == 2 ? 1 : this->gan_mode_ + 1;
 }
 
 #ifdef CPU_ONLY

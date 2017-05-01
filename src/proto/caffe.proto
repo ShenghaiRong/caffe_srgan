@@ -241,8 +241,6 @@ message SolverParameter {
   optional SolverType solver_type = 30 [default = SGD];
   
   optional bool gan_solver = 41 [default = false];
-
-  optional bool layer_wise_reduce = 42; // lasted add 42 ,next 43
 }
 
 // A message that stores the solver snapshots
@@ -284,7 +282,7 @@ message NetStateRule {
 
 // Specifies training parameters (multipliers on global learning constants,
 // and the name and other settings used for weight sharing).
-message  ParamSpec {
+message ParamSpec {
   // The names of the parameter blobs -- useful for sharing parameters among
   // layers, but never required otherwise.  To share a parameter between two
   // layers, give it a (non-empty) name.
@@ -310,7 +308,7 @@ message  ParamSpec {
 // NOTE ---------------------------------------------------------------------------------
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 167 (last added: gan_gate_param)
+// LayerParameter next available layer-specific ID: 165 (last added: weighted_pooling_param)
 // --------------------------------------------------------------------------------------
 message LayerParameter {
   optional string name = 1; // the layer name
@@ -389,7 +387,6 @@ message LayerParameter {
   optional InnerProductParameter inner_product_param = 117;
   optional InputParameter input_param = 143;
   optional GANLossParameter gan_loss_param = 161; 
-  optional GANGateParameter gan_gate_param = 166;
   optional LabelVecRegParameter label_vec_reg_param = 160;
   optional LogParameter log_param = 134;
   optional LBNParameter lbn_param = 147;
@@ -409,7 +406,6 @@ message LayerParameter {
   optional ReLUParameter relu_param = 123;
   optional ReplicateParameter replicate_param = 157;
   optional ReshapeParameter reshape_param = 133;
-  //optional PixelshufflerParameter pixelshuffler_param = 165;
   optional RoiCatParameter roi_cat_param = 152;
   optional RoiDataParameter roi_data_param = 148;
   optional ROIFeatureParameter roi_feature_param = 159;
@@ -657,8 +653,6 @@ message ConvolutionParameter {
   optional bool gen_mode = 21 [default = false];
   
   repeated uint32 shape_offset = 22;
-
-  optional int32 iter_size = 23 [default = 1];
   
 }
 
@@ -893,8 +887,6 @@ message InnerProductParameter {
   optional bool dis_mode = 8 [default = false];
   
   optional bool gen_mode = 9 [default = false];
-
-  optional uint32 iter_size = 10 [default = 1];
 }
 
 message InputParameter {
@@ -1146,12 +1138,6 @@ message ReshapeParameter {
   optional int32 pixelshuffler = 4 [default = 1];
 }
 
-//message PixelshufflerParameter {
-//  optional BlobShape shape = 1;
-//  optional int32 axis = 2 [default = 0];
-//  optional int32 num_axes = 3 [default = -1];
-//}
-
 // Message that stores parameters used by ROIPoolingLayer
 message ROIPoolingParameter {
   // Pad, kernel size, and stride are all given as a single value for equal
@@ -1202,8 +1188,6 @@ message ScaleParameter {
   optional bool dis_mode = 6 [default = false];
   
   optional bool gen_mode = 7 [default = false];
-
-  optional uint32 iter_size = 8 [default = 1];
 
 }
 
@@ -1658,14 +1642,12 @@ message LabelVecRegParameter {
 message GANLossParameter {
   optional uint32 dis_iter = 1 [default = 1];
   optional uint32 gen_iter = 2 [default = 1];
-  optional uint32 iter_size = 3 [default = 1];
-  optional float gen_lossweight = 4 [default =1];
-  optional float dis_lossweight = 5 [default = 1];
-  optional bool gen_mode = 6 [default = false];
-}
-
-message GANGateParameter {
-    optional uint32 iter_size = 1 [default = 1];
+  optional float dis_lossweight = 3 [default = 1];
+  optional float gen_lossweight = 4 [default = 1];
+  optional bool simple_genloss = 5 [default = false];
+  optional float k_lr = 6 [default = 0];
+  optional float equilibrium = 7 [default = 0];
+  optional bool nothing = 8 [default = false];
 }
 
 message RandVecParameter {

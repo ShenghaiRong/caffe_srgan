@@ -16,7 +16,8 @@ namespace caffe {
  *     bottom[0] : D(x)
  *     bottom[1] : D(G(z))
  *  2. loss for generator
- *     bottom[0] : D(G(z))
+ *     bottom[0] : D(x)
+ *     bottom[1] : D(G(z))
  */
 
 
@@ -32,9 +33,9 @@ class GANLossLayer : public LossLayer<Dtype> {
       vector<int> loss_shape(0);  // Loss layers output a scalar; 0 axes.
       top[0]->Reshape(loss_shape);
   }
-  virtual inline int ExactNumBottomBlobs() const { return -1; }
-  virtual inline int MinBottomBlobs() const { return 1; }
-  virtual inline int MaxBottomBlobs() const { return 2; }
+  virtual inline int ExactNumBottomBlobs() const { return 2; }
+//  virtual inline int MinBottomBlobs() const { return 1; }
+//  virtual inline int MaxBottomBlobs() const { return 2; }
   virtual inline const char* type() const { return "GANLoss"; }
   virtual inline bool AllowForceBackward(const int bottom_index) const {
     return true;
@@ -48,16 +49,20 @@ class GANLossLayer : public LossLayer<Dtype> {
 
   int dis_iter_;
   int gen_iter_;
+  float dlw_;
+  float glw_;
+  int gan_mode_;
   int iter_idx_;
-  int iter_size_;
-  float gen_lw_;
-  float dis_lw_;
+  bool sgl_;
+  float k_t_;
+  float k_lr_;
+  float equil_;
 };
 
 template <typename Dtype>
-class GANDGLossLayer : public LossLayer<Dtype> {
+class BEGANLossLayer : public LossLayer<Dtype> {
  public:
-  explicit GANDGLossLayer(const LayerParameter& param)
+  explicit BEGANLossLayer(const LayerParameter& param)
       : LossLayer<Dtype>(param)  {}
   virtual void LayerSetUp(const vector<Blob<Dtype>*>& bottom,
       const vector<Blob<Dtype>*>& top);
@@ -66,8 +71,10 @@ class GANDGLossLayer : public LossLayer<Dtype> {
       vector<int> loss_shape(0);  // Loss layers output a scalar; 0 axes.
       top[0]->Reshape(loss_shape);
   }
-  virtual inline int ExactNumBottomBlobs() const { return 1; }
-  virtual inline const char* type() const { return "GANDGLoss"; }
+  virtual inline int ExactNumBottomBlobs() const { return 4; }
+//  virtual inline int MinBottomBlobs() const { return 1; }
+//  virtual inline int MaxBottomBlobs() const { return 2; }
+  virtual inline const char* type() const { return "BEGANLoss"; }
   virtual inline bool AllowForceBackward(const int bottom_index) const {
     return true;
   }
@@ -80,13 +87,18 @@ class GANDGLossLayer : public LossLayer<Dtype> {
 
   int dis_iter_;
   int gen_iter_;
+  float dlw_;
+  float glw_;
   int gan_mode_;
-  int dxter_idx_;
-  int dzter_idx_;
-  int giter_idx_;
-  int iter_size_;
-  float gen_lw_;
-  float dis_lw_;
+  int iter_idx_;
+  float k_t_;
+  float k_lr_;
+  float equil_;
+  Blob<Dtype> diffx_;
+  Blob<Dtype> diffG_;
+  Dtype L_x_;
+  Dtype L_G_;
+  bool nothing_;
 };
 
 

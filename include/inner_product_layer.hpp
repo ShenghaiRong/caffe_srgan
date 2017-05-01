@@ -47,7 +47,6 @@ class InnerProductLayer : public Layer<Dtype> {
   bool transpose_;  ///< if true, assume transposed weights
   bool update_weight_;
   int gan_mode_;
-  int iter_size_;
 };
 
 }  // namespace caffe
