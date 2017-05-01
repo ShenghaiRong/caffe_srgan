@@ -102,7 +102,7 @@ layer{
 3. For the utils of compute_psnr\_ssim , the code borrows from this link [https://github.com/ShenghaiRong/caffe-vdsr](https://github.com/ShenghaiRong/caffe-vdsr) . But I modified the codes a lot.
 
 ## Plans
-* [ ] Finetuning the SRResNet-MSE model.
+* [x] Finetuning the SRResNet-MSE model.
 * [ ] Properly train the SRGAN-MSE model.
 * [ ] Train the SRResNet-VGG networks.
 * [ ] Train the SRGAN-VGG networks.
