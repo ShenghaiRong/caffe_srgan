@@ -53,34 +53,38 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
     cd yourpath/caffe/examples/SRGAN/ && python srres-deploy.py 
    ```
 ## Benchmarks
-Currently, the SRResNet-MSE worked well ,but it is still training and tuning. My results of SRGAN-MSE are
+After fixing the SRResNet-MSE architecture(Add Scale_layer) and  the deploy.prototxt(For test, use global stats in the BN_layer) , the SRResNet-MSE worked well and its results are close to the offical results. My results of SRGAN-MSE are weird, and I don't know what's going wrong with it...
 
-weird, and I don't know what's going wrong with it...
-
- > *Factor 4 : Set5*
+ > Set5 [4x upscaling]: 
 
 |    Model/Benchmarks    | PSNR  |  SSIM  |
 | :--------------------: | :---: | :----: |
 | SRResNet-MSE(official) | 32.05 | 0.9019 |
-|   SRResNet-MSE(mine)   | 31.62 | 0.8852 |
+|   SRResNet-MSE(mine)   | 31.95 | 0.8908 |
 |  SRGAN-MSE(official)   | 29.40 | 0.8472 |
 |    SRGAN-MSE(mine)     | 31.59 | 0.8845 |
 
+ >Set14 [4x upscaling]: 
+
+|    Model/Benchmarks    | PSNR  |  SSIM  |
+| :--------------------: | :---: | :----: |
+| SRResNet-MSE(official) | 28.49 | 0.8184 |
+|   SRResNet-MSE(mine)   | 28.39 | 0.7779 |
+
 ## Results
-*Factor 4 : Set5*
 
 |                 Bicubic                  |            SRResNet-MSE(mine)            |               Ground Truth               |
 | :--------------------------------------: | :--------------------------------------: | :--------------------------------------: |
-| ![Alt text](./SRGAN/Set5_sr/baby_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_1.bmp) | ![Alt text](./SRGAN/Set5_sr/baby_GT.bmp) |
-| ![Alt text](./SRGAN/Set5_sr/bird_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_2.bmp) | ![Alt text](./SRGAN/Set5_sr/bird_GT.bmp) |
-| ![Alt text](./SRGAN/Set5_sr/butterfly_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_3.bmp) | ![Alt text](./SRGAN/Set5_sr/butterfly_GT.bmp) |
-| ![Alt text](./SRGAN/Set5_sr/head_bicubic4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_4.bmp) | ![Alt text](./SRGAN/Set5_sr/head_GT.bmp) |
-| ![Alt text](./SRGAN/Set5_sr/woman_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_5.bmp) | ![Alt text](./SRGAN/Set5_sr/woman_GT.bmp) |
+| ![Alt text](./SRGAN/Set5_sr/baby_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_74s_sb_180kti_0.bmp) | ![Alt text](./SRGAN/Set5_sr/baby_GT.bmp) |
+| ![Alt text](./SRGAN/Set5_sr/bird_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_74s_sb_180kti_1.bmp) | ![Alt text](./SRGAN/Set5_sr/bird_GT.bmp) |
+| ![Alt text](./SRGAN/Set5_sr/butterfly_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_74s_sb_180kti_2.bmp) | ![Alt text](./SRGAN/Set5_sr/butterfly_GT.bmp) |
+| ![Alt text](./SRGAN/Set5_sr/head_bicubic4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_74s_sb_180kti_3.bmp) | ![Alt text](./SRGAN/Set5_sr/head_GT.bmp) |
+| ![Alt text](./SRGAN/Set5_sr/woman_bicubicx4.bmp) | ![Alt text](./SRGAN/Set5_sr/srres-mse_74s_sb_180kti_4.bmp) | ![Alt text](./SRGAN/Set5_sr/woman_GT.bmp) |
 
 
 ## Notes
 1. Before you train the networks , maybe you should change the  directory path of training and testing data. 
-2. Here offer a model named SRResNet_75s_iter_30000.caffemodel which you can finetuning .
+2. Here offer a model named SRResNet-MSE_74s_sb_iter_180000.caffemodel which you can finetuning .
 3. Currently, the SRGAN-MSE doesn't work well , and it is still training and tuning. 
 
 ## Implementation Details
