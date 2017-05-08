@@ -55,7 +55,7 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
 ## Benchmarks
 After fixing the SRResNet-MSE architecture(Add Scale_layer) and  the deploy.prototxt(For test, use global stats in the BN_layer) , the SRResNet-MSE worked well and its results are close to the offical results. My results of SRGAN-MSE are weird, and I don't know what's going wrong with it...
 
- > Set5 [4x upscaling]: 
+ > **Set5 [4x upscaling]:**
 
 |    Model/Benchmarks    | PSNR  |  SSIM  |
 | :--------------------: | :---: | :----: |
@@ -64,7 +64,7 @@ After fixing the SRResNet-MSE architecture(Add Scale_layer) and  the deploy.prot
 |  SRGAN-MSE(official)   | 29.40 | 0.8472 |
 |    SRGAN-MSE(mine)     | 31.59 | 0.8845 |
 
- >Set14 [4x upscaling]: 
+> **Set14 [4x upscaling]:** 
 
 |    Model/Benchmarks    | PSNR  |  SSIM  |
 | :--------------------: | :---: | :----: |
