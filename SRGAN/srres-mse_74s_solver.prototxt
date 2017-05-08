@@ -16,6 +16,6 @@ max_iter: 960000
 #iter_size: 2
 # snapshot intermediate results
 snapshot: 15000
-snapshot_prefix: "examples/SRGAN/Model/SRResNet-MSE_74s_p"
+snapshot_prefix: "examples/SRGAN/Model/SRResNet-MSE_74s_sb"
 # solver mode: CPU or GPU
 solver_mode: GPU

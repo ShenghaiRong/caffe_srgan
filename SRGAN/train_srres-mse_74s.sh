@@ -6,4 +6,4 @@
 #########################################################################
 #!/bin/bash
 DATETIME=`date +%Y-%m-%d-%R`
-./build/tools/caffe train -solver examples/SRGAN/srres-mse_74s_solver.prototxt -gpu all -snapshot examples/SRGAN/Model/SRResNet-MSE_74s_p_iter_30000.solverstate 2>&1 | tee examples/SRGAN/log/SRResNet-MSE_74s_p_${DATETIME}.txt
+./build/tools/caffe train -solver examples/SRGAN/srres-mse_74s_solver.prototxt -gpu all -weights examples/SRGAN/Model/SRResNet-MSE_74s_iter_735000.caffemodel 2>&1 | tee examples/SRGAN/log/SRResNet-MSE_74s_sb_${DATETIME}.txt
