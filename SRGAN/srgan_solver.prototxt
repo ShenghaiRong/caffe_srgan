@@ -4,7 +4,7 @@ net: "examples/SRGAN/srgan-mse.prototxt"
 #test_interval: 90000  
 # The base learning rate, momentum and the weight decay of the network.
 type: "Adam"
-base_lr: 0.00001
+base_lr: 1e-5
 weight_decay: 0.00001
 momentum: 0.9
 # The learning rate policy
@@ -19,6 +19,6 @@ gan_solver: true
 #clip_gradients: 100
 # snapshot intermediate results
 snapshot: 10000
-snapshot_prefix: "examples/SRGAN/Model/SRGAN-MSE_55mse_glw1e-3_sglt_bef"
+snapshot_prefix: "examples/SRGAN/Model/SRGAN-MSE_sb"
 # solver mode: CPU or GPU
 solver_mode: GPU

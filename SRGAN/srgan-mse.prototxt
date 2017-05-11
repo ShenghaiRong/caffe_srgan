@@ -94,6 +94,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g2"
+  type: "Scale"
+  bottom: "conv_g2"
+  top: "conv_g2"
+  param {
+    name: "gen_s2"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b2"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g2"
     type: "ReLU"
     bottom: "conv_g2"
@@ -146,6 +166,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g3"
+  type: "Scale"
+  bottom: "conv_g3"
+  top: "conv_g3"
+  param {
+    name: "gen_s3"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b3"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum1"
@@ -208,6 +248,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g4"
+  type: "Scale"
+  bottom: "conv_g4"
+  top: "conv_g4"
+  param {
+    name: "gen_s4"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b4"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g4"
     type: "ReLU"
     bottom: "conv_g4"
@@ -260,6 +320,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g5"
+  type: "Scale"
+  bottom: "conv_g5"
+  top: "conv_g5"
+  param {
+    name: "gen_s5"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b5"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum2"
@@ -322,6 +402,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g6"
+  type: "Scale"
+  bottom: "conv_g6"
+  top: "conv_g6"
+  param {
+    name: "gen_s6"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b6"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g6"
     type: "ReLU"
     bottom: "conv_g6"
@@ -374,6 +474,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g7"
+  type: "Scale"
+  bottom: "conv_g7"
+  top: "conv_g7"
+  param {
+    name: "gen_s7"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b7"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum3"
@@ -436,6 +556,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g8"
+  type: "Scale"
+  bottom: "conv_g8"
+  top: "conv_g8"
+  param {
+    name: "gen_s8"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b8"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g8"
     type: "ReLU"
     bottom: "conv_g8"
@@ -488,6 +628,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g9"
+  type: "Scale"
+  bottom: "conv_g9"
+  top: "conv_g9"
+  param {
+    name: "gen_s9"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b9"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum4"
@@ -550,6 +710,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g10"
+  type: "Scale"
+  bottom: "conv_g10"
+  top: "conv_g10"
+  param {
+    name: "gen_s10"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b10"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g10"
     type: "ReLU"
     bottom: "conv_g10"
@@ -602,6 +782,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g11"
+  type: "Scale"
+  bottom: "conv_g11"
+  top: "conv_g11"
+  param {
+    name: "gen_s11"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b11"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum5"
@@ -664,6 +864,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g12"
+  type: "Scale"
+  bottom: "conv_g12"
+  top: "conv_g12"
+  param {
+    name: "gen_s12"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b12"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g12"
     type: "ReLU"
     bottom: "conv_g12"
@@ -716,6 +936,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g13"
+  type: "Scale"
+  bottom: "conv_g13"
+  top: "conv_g13"
+  param {
+    name: "gen_s13"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b13"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum6"
@@ -778,6 +1018,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g14"
+  type: "Scale"
+  bottom: "conv_g14"
+  top: "conv_g14"
+  param {
+    name: "gen_s14"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b14"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g14"
     type: "ReLU"
     bottom: "conv_g14"
@@ -830,6 +1090,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g15"
+  type: "Scale"
+  bottom: "conv_g15"
+  top: "conv_g15"
+  param {
+    name: "gen_s15"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b15"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum7"
@@ -892,6 +1172,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g16"
+  type: "Scale"
+  bottom: "conv_g16"
+  top: "conv_g16"
+  param {
+    name: "gen_s16"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b16"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g16"
     type: "ReLU"
     bottom: "conv_g16"
@@ -944,6 +1244,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g17"
+  type: "Scale"
+  bottom: "conv_g17"
+  top: "conv_g17"
+  param {
+    name: "gen_s17"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b17"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum8"
@@ -1006,6 +1326,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g18"
+  type: "Scale"
+  bottom: "conv_g18"
+  top: "conv_g18"
+  param {
+    name: "gen_s18"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b18"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g18"
     type: "ReLU"
     bottom: "conv_g18"
@@ -1058,6 +1398,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g19"
+  type: "Scale"
+  bottom: "conv_g19"
+  top: "conv_g19"
+  param {
+    name: "gen_s19"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b19"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum9"
@@ -1120,6 +1480,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g20"
+  type: "Scale"
+  bottom: "conv_g20"
+  top: "conv_g20"
+  param {
+    name: "gen_s20"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b20"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g20"
     type: "ReLU"
     bottom: "conv_g20"
@@ -1172,6 +1552,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g21"
+  type: "Scale"
+  bottom: "conv_g21"
+  top: "conv_g21"
+  param {
+    name: "gen_s21"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b21"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum10"
@@ -1234,6 +1634,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g22"
+  type: "Scale"
+  bottom: "conv_g22"
+  top: "conv_g22"
+  param {
+    name: "gen_s22"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b22"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g22"
     type: "ReLU"
     bottom: "conv_g22"
@@ -1286,6 +1706,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g23"
+  type: "Scale"
+  bottom: "conv_g23"
+  top: "conv_g23"
+  param {
+    name: "gen_s23"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b23"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum11"
@@ -1347,6 +1787,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g24"
+  type: "Scale"
+  bottom: "conv_g24"
+  top: "conv_g24"
+  param {
+    name: "gen_s24"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b24"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g24"
     type: "ReLU"
     bottom: "conv_g24"
@@ -1399,6 +1859,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g25"
+  type: "Scale"
+  bottom: "conv_g25"
+  top: "conv_g25"
+  param {
+    name: "gen_s25"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b25"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum12"
@@ -1461,6 +1941,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g26"
+  type: "Scale"
+  bottom: "conv_g26"
+  top: "conv_g26"
+  param {
+    name: "gen_s26"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b26"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g26"
     type: "ReLU"
     bottom: "conv_g26"
@@ -1513,6 +2013,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g27"
+  type: "Scale"
+  bottom: "conv_g27"
+  top: "conv_g27"
+  param {
+    name: "gen_s27"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b27"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum13"
@@ -1575,6 +2095,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g28"
+  type: "Scale"
+  bottom: "conv_g28"
+  top: "conv_g28"
+  param {
+    name: "gen_s28"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b28"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g28"
     type: "ReLU"
     bottom: "conv_g28"
@@ -1627,6 +2167,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g29"
+  type: "Scale"
+  bottom: "conv_g29"
+  top: "conv_g29"
+  param {
+    name: "gen_s29"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b29"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum14"
@@ -1689,6 +2249,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g30"
+  type: "Scale"
+  bottom: "conv_g30"
+  top: "conv_g30"
+  param {
+    name: "gen_s30"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b30"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g30"
     type: "ReLU"
     bottom: "conv_g30"
@@ -1741,6 +2321,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g31"
+  type: "Scale"
+  bottom: "conv_g31"
+  top: "conv_g31"
+  param {
+    name: "gen_s31"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b31"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum15"
@@ -1803,6 +2403,26 @@ layer {
     }
 }
 layer {
+  name: "scale_batch_g32"
+  type: "Scale"
+  bottom: "conv_g32"
+  top: "conv_g32"
+  param {
+    name: "gen_s32"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b32"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
+}
+layer {
     name: "relu_g32"
     type: "ReLU"
     bottom: "conv_g32"
@@ -1855,6 +2475,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g33"
+  type: "Scale"
+  bottom: "conv_g33"
+  top: "conv_g33"
+  param {
+    name: "gen_s33"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b33"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum16"
@@ -1915,6 +2555,26 @@ layer {
     batch_norm_param {
         use_global_stats: false
     }
+}
+layer {
+  name: "scale_batch_g34"
+  type: "Scale"
+  bottom: "conv_g34"
+  top: "conv_g34"
+  param {
+    name: "gen_s34"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "gen_b34"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    gen_mode: true
+  }
 }
 layer {
     name: "sum17"
@@ -2042,7 +2702,7 @@ layer {
     bottom: "conv_g37"
     bottom: "label"
     top: "mse_loss"
-    loss_weight: 0.55
+    loss_weight: 0.75
     }
 #-----------   gan gate  ------------
 layer {
@@ -2156,6 +2816,26 @@ layer {
   }
 }
 layer {
+  name: "scale_batch_d2"
+  type: "Scale"
+  bottom: "dis_conv_d2"
+  top: "dis_conv_d2"
+  param {
+    name: "dis_s2"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b2"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
+  }
+}
+layer {
   name: "dis_conv_d3"
   type: "Convolution"
   bottom: "dis_conv_d2"
@@ -2213,6 +2893,26 @@ layer {
   }
   batch_norm_param {
     use_global_stats: false
+  }
+}
+layer {
+  name: "scale_batch_d3"
+  type: "Scale"
+  bottom: "dis_conv_d3"
+  top: "dis_conv_d3"
+  param {
+    name: "dis_s3"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b3"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
   }
 }
 layer {
@@ -2276,6 +2976,26 @@ layer {
   }
 }
 layer {
+  name: "scale_batch_d4"
+  type: "Scale"
+  bottom: "dis_conv_d4"
+  top: "dis_conv_d4"
+  param {
+    name: "dis_s4"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b4"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
+  }
+}
+layer {
   name: "dis_conv_d5"
   type: "Convolution"
   bottom: "dis_conv_d4"
@@ -2333,6 +3053,26 @@ layer {
   }
   batch_norm_param {
     use_global_stats: false
+  }
+}
+layer {
+  name: "scale_batch_d5"
+  type: "Scale"
+  bottom: "dis_conv_d5"
+  top: "dis_conv_d5"
+  param {
+    name: "dis_s5"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b5"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
   }
 }
 layer {
@@ -2396,6 +3136,26 @@ layer {
   }
 }
 layer {
+  name: "scale_batch_d6"
+  type: "Scale"
+  bottom: "dis_conv_d6"
+  top: "dis_conv_d6"
+  param {
+    name: "dis_s6"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b6"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
+  }
+}
+layer {
   name: "dis_conv_d7"
   type: "Convolution"
   bottom: "dis_conv_d6"
@@ -2456,6 +3216,26 @@ layer {
   }
 }
 layer {
+  name: "scale_batch_d7"
+  type: "Scale"
+  bottom: "dis_conv_d7"
+  top: "dis_conv_d7"
+  param {
+    name: "dis_s7"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b7"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
+  }
+}
+layer {
   name: "dis_conv_d8"
   type: "Convolution"
   bottom: "dis_conv_d7"
@@ -2513,6 +3293,26 @@ layer {
   }
   batch_norm_param {
     use_global_stats: false
+  }
+}
+layer {
+  name: "scale_batch_d8"
+  type: "Scale"
+  bottom: "dis_conv_d8"
+  top: "dis_conv_d8"
+  param {
+    name: "dis_s8"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  param {
+    name: "dis_b8"
+    lr_mult: 1
+    decay_mult: 1
+  }
+  scale_param {
+    bias_term: true
+    dis_mode: true
   }
 }
 layer {
@@ -2603,7 +3403,5 @@ layer {
     dis_lossweight: 1
     gen_lossweight: 1e-3
     simple_genloss: true
-    k_lr: 0
-    equilibrium: 0
   }
 }
