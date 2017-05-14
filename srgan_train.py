@@ -1,4 +1,3 @@
-import caffe
 import numpy as np
 import time
 import os
@@ -6,17 +5,25 @@ import sys
 
 if len(sys.argv) == 1:
   start_snapshot = 0
+elif len(sys.argv) == 2:
+  start_snapshot = int(sys.argv[1][0])
 
 caffe_root = '/home/rongsh/caffe/'
 sys.path.insert(0, caffe_root + 'python')
-srgan_root = caffe_root + 'examples/srgan/'
-max_iter = int(2) # maximum number of iterations
-display_every = 1 # show losses every so many iterations
-snapshot_every = 1
-snapshot_folder = srgan_root + 'model'
+
+import caffe
+
+max_iter = int(480000) # maximum number of iterations
+display_every = 100 # show losses every so many iterations
+snapshot_every = 20000
+old_flags = 'srgan'
+model_flags = 'srgan_1g_nf'
+old_snapshot_folder = '/data13/rongsh/' + old_flags + '_model'
+snapshot_folder = '/data13/rongsh/' + model_flags + '_model'
 batch_size = 8
-flags = 'srgan-mse'
-log_save = caffe_root + 'log'
+gen_lw = np.float32(1)
+flags = model_flags + '-' +time.strftime('%H:%M_%m-%d-%Y',time.localtime(time.time()))
+log_save = 'log'
 
 caffe.set_mode_gpu()
 generator = caffe.AdamSolver('solver_generator.prototxt')
@@ -24,26 +31,28 @@ discriminator = caffe.AdamSolver('solver_discriminator.prototxt')
 data_reader = caffe.AdamSolver('solver_dataset.prototxt')
 mse = caffe.AdamSolver('solver_mse.prototxt')
 
+if not os.path.exists(snapshot_folder):
+  os.makedirs(snapshot_folder)
 if start_snapshot:
-  curr_snapshot_folder = snapshot_folder +'/' + str(start_snapshot)
-  s = '\n === Starting from snapshot ' + curr_snapshot_folder + ' ===\n'
-  f=open(log_save +'/'+flags +'.txt','a')
-  f.write(s+'\n')
+  old_curr_snapshot_folder = old_snapshot_folder +'/' + str(start_snapshot)
+  s = '=== Starting from snapshot ' + old_curr_snapshot_folder + ' ===\n'
+  f=open(log_save +'/'+flags +'.txt','w')
+  f.write(s)
   f.close()
-  generator_caffemodel = curr_snapshot_folder +'/' + 'generator.caffemodel'
+  generator_caffemodel = old_curr_snapshot_folder +'/' + 'generator.caffemodel'
   if os.path.isfile(generator_caffemodel):
     generator.net.copy_from(generator_caffemodel)
   else:
     raise Exception('File %s does not exist' % generator_caffemodel)
-  #discriminator_caffemodel = curr_snapshot_folder +'/' + 'discriminator.caffemodel'
-  #if os.path.isfile(discriminator_caffemodel):
-  #  discriminator.net.copy_from(discriminator_caffemodel)
-  #else:
-  #  raise Exception('File %s does not exist' % discriminator_caffemodel)
+  discriminator_caffemodel = old_curr_snapshot_folder +'/' + 'discriminator.caffemodel'
+  if os.path.isfile(discriminator_caffemodel):
+    discriminator.net.copy_from(discriminator_caffemodel)
+  else:
+    raise Exception('File %s does not exist' % discriminator_caffemodel)
 
 
-#discr_loss_weight = discriminator.net._blob_loss_weights[discriminator.net._blob_names_index['gan_loss']]
-discr_loss_weight = 1
+discr_loss_weight = discriminator.net._blob_loss_weights[discriminator.net._blob_names_index['gan_loss']]
+#discr_loss_weight = 1
 train_discr = True
 train_gen = True
 
@@ -58,11 +67,11 @@ for iter in range(start_snapshot,max_iter):
   generated_img = generator.net.blobs['conv_g37'].data
   
   mse.net.blobs['data'].data[...] = generated_img
-  mse.net.blobs['label'].data[...] = data_reader.net.blobs['data'].label
+  mse.net.blobs['label'].data[...] = data_reader.net.blobs['label'].data
   mse.net.forward_simple()
   mse_loss = np.copy(mse.net.blobs['mse_loss'].data)
   # run the discriminator on real data
-  discriminator.net.blobs['data'].data[...] = data_reader.net.blobs['data'].label
+  discriminator.net.blobs['data'].data[...] = data_reader.net.blobs['label'].data
   discriminator.net.blobs['label'].data[...] = np.ones((batch_size,1), dtype='float32')
 #  discriminator.net.blobs['feat'].data[...] = feat_real
   discriminator.net.forward_simple()
@@ -87,7 +96,7 @@ for iter in range(start_snapshot,max_iter):
   discriminator.net.blobs['label'].data[...] = np.ones((batch_size,1), dtype='float32')
 #  discriminator.net.blobs['feat'].data[...] = feat_real
   discriminator.net.forward_simple()
-  discr_fake_for_generator_loss = np.copy(discriminator.net.blobs['gan_loss'].data)
+  discr_fake_for_generator_loss = np.copy(discriminator.net.blobs['gan_loss'].data) 
   if train_gen:
     generator.increment_iter()
     generator.net.clear_param_diffs()
@@ -98,16 +107,16 @@ for iter in range(start_snapshot,max_iter):
     mse.net.backward_simple()
 
 #    generator.net.blobs['generated'].diff[...] = encoder.net.blobs['data'].diff + discriminator.net.blobs['data'].diff
-    generator.net.blobs['conv_g37'].diff[...] = discriminator.net.blobs['data'].diff
+    generator.net.blobs['conv_g37'].diff[...] = discriminator.net.blobs['data'].diff * gen_lw
     generator.net.blobs['conv_g37'].diff[...] += mse.net.blobs['data'].diff
 
     generator.net.backward_simple()
     generator.apply_update()
 
   if iter % display_every == 0 :       
-      s=time.strftime('%Y-%m-%d %H:%M:%S:',time.localtime(time.time())) + ' time='+str(time.time()-start_time)
+      s=time.strftime('%Y-%m-%d %H:%M:%S:',time.localtime(time.time())) 
       s += ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
-      s += '\n                   gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
+      s += '\n dis_loss=' + str(discr_real_loss + discr_fake_loss) + ' gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss=' +str(mse_loss)
       f=open(log_save +'/'+flags +'.txt','a')
       f.write(s+'\n')
       f.close() 
@@ -124,36 +133,34 @@ for iter in range(start_snapshot,max_iter):
       discriminator.net.save(discriminator_caffemodel)
       s = '\n === Saving snapshot to ' + curr_snapshot_folder + ' ===\n'
       f=open(log_save +'/'+flags +'.txt','a')
-      f.write(s+'\n')
+      f.write(s + '\n')
       f.close()
 
-  discr_loss_ratio = (discr_real_loss + discr_fake_loss) / discr_fake_for_generator_loss
-  if discr_loss_ratio < 1e-1 and train_discr:    
-      train_discr = False
-      train_gen = True
-      s += ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
-      s += '\n                   gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
-      s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
-      f=open(log_save +'/'+flags +'.txt','a')
-      f.write(s+'\n')
-      f.close()
-  if discr_loss_ratio > 5e-1 and not train_discr:    
-      train_discr = True
-      train_gen = True
-      s += ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
-      s += '\n                   gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
-      s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
-      f=open(log_save +'/'+flags +'.txt','a')
-      f.write(s+'\n')
-      f.close()
-  if discr_loss_ratio > 1e1 and train_gen:
-      train_gen = False
-      train_discr = True
-      s += ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
-      s += '\n                   gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
-      s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
-      f=open(log_save +'/'+flags +'.txt','a')
-      f.write(s+'\n')
-      f.close()
-    
-
+  #discr_loss_ratio = (discr_real_loss + discr_fake_loss) / discr_fake_for_generator_loss
+  #if discr_loss_ratio < 1e-1 and train_discr:    
+  #    train_discr = False
+  #    train_gen = True
+  #    s = ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
+  #    s += '\n dis_loss=' + str(discr_real_loss + discr_fake_loss) + ' gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
+  #    s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
+  #    f=open(log_save +'/'+flags +'.txt','a')
+  #    f.write(s+'\n')
+  #    f.close()
+  #if discr_loss_ratio > 5e-1 and not train_discr:    
+  #    train_discr = True
+  #    train_gen = True
+  #    s = ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
+  #    s += '\n dis_loss=' + str(discr_real_loss + discr_fake_loss) + ' gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
+  #    s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
+  #    f=open(log_save +'/'+flags +'.txt','a')
+  #    f.write(s+'\n')
+  #    f.close()
+  #if discr_loss_ratio > 1e1 and train_gen:
+  #    train_gen = False
+  #    train_discr = True
+  #    s = ' step='+str(iter)+' disc_real_loss='+str(discr_real_loss)+' disc_fake_loss='+str(discr_fake_loss) 
+  #    s += '\n dis_loss=' + str(discr_real_loss + discr_fake_loss) + ' gen_loss=' +str(discr_fake_for_generator_loss) + ' mse_loss' +str(mse_loss)
+  #    s += ' train_discr=' + str(train_discr) + ' train_gen=' + str(train_gen)
+  #    f=open(log_save +'/'+flags +'.txt','a')
+  #    f.write(s+'\n')
+  #    f.close()
