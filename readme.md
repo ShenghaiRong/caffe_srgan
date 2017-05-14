@@ -70,6 +70,7 @@ After fixing the SRResNet-MSE architecture(Add Scale_layer) and  the deploy.prot
 | :--------------------: | :---: | :----: |
 | SRResNet-MSE(official) | 28.49 | 0.8184 |
 |   SRResNet-MSE(mine)   | 28.55 | 0.7786 |
+|  SRGAN-MSE(official)   | 26.02 | 0.7397 |
 |    SRGAN-MSE(mine)     | 28.52 | 0.7794 |
 
 ## Results
