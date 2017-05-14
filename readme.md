@@ -60,17 +60,17 @@ After fixing the SRResNet-MSE architecture(Add Scale_layer) and  the deploy.prot
 |    Model/Benchmarks    | PSNR  |  SSIM  |
 | :--------------------: | :---: | :----: |
 | SRResNet-MSE(official) | 32.05 | 0.9019 |
-|   SRResNet-MSE(mine)   | 31.95 | 0.8908 |
+|   SRResNet-MSE(mine)   | 32.01 | 0.8914 |
 |  SRGAN-MSE(official)   | 29.40 | 0.8472 |
-|    SRGAN-MSE(mine)     | 31.98 | 0.8915 |
+|    SRGAN-MSE(mine)     | 32.01 | 0.8916 |
 
 > **Set14 [4x upscaling]:** 
 
 |    Model/Benchmarks    | PSNR  |  SSIM  |
 | :--------------------: | :---: | :----: |
 | SRResNet-MSE(official) | 28.49 | 0.8184 |
-|   SRResNet-MSE(mine)   | 28.39 | 0.7779 |
-|    SRGAN-MSE(mine)     | 28.50 | 0.7793 |
+|   SRResNet-MSE(mine)   | 28.55 | 0.7786 |
+|    SRGAN-MSE(mine)     | 28.52 | 0.7794 |
 
 ## Results
 
