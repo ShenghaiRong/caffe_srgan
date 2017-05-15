@@ -17,11 +17,11 @@ max_iter = int(480000) # maximum number of iterations
 display_every = 100 # show losses every so many iterations
 snapshot_every = 20000
 old_flags = 'srgan'
-model_flags = 'srgan_1g_nf'
+model_flags = 'srgan_1e-3g_nf'
 old_snapshot_folder = '/data13/rongsh/' + old_flags + '_model'
 snapshot_folder = '/data13/rongsh/' + model_flags + '_model'
 batch_size = 8
-gen_lw = np.float32(1)
+gen_lw = np.float32(1e-3)
 flags = model_flags + '-' +time.strftime('%H:%M_%m-%d-%Y',time.localtime(time.time()))
 log_save = 'log'
 
