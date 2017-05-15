@@ -1,0 +1,11 @@
+name: "dataset"
+layer {
+    name: "data"
+    type: "HDF5Data"
+    top: "data"
+    top: "label"
+    hdf5_data_param {
+        source: "train_200k.txt"
+        batch_size: 8
+    }
+}

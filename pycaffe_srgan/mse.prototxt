@@ -1,0 +1,24 @@
+force_backward: true
+input: "data"
+input_shape {
+  dim: 8
+  dim: 3
+  dim: 296
+  dim: 296
+}
+
+input: "label"
+input_shape {
+  dim: 8
+  dim: 3
+  dim: 296
+  dim: 296
+}
+
+layer {
+  name: "mse_loss"
+  type: "EuclideanLoss"
+  bottom: "data"
+  bottom: "label"
+  top: "mse_loss"
+}
