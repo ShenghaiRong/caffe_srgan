@@ -28,27 +28,25 @@ A caffe implementation of Christian et al's ["Photo-Realistic Single Image Super
  cp -r SRGAN caffe/examples/ 
 ```
 
-4. Preparing training data: crop images of the ImageNet dataset into 75*75*3 sub-imgs and save as .h5  format（my training set: 192000x3x75x75）
+4. Preparing training data: randomly crop images of the ImageNet dataset into 216000 sub-imgs and save as .h5  format（my  finally training set: 216000x3x74x74, 21600x3x296x296）
    * My implementation is in the win10 matlab : run utils/Generate_data/mygenerate_sr_trainx4.m
 
-5. Preparing testing data: crop images of the Set5 to 75*75*3 sub-imgs and save as .h5 format
-   * My implementation is in the win10 matlab : run utils/Generate_data/mygenerate_sr_testx4.m
-6. Training SRResNet-MSE:
+5. Training SRResNet-MSE:
    ```
     cd yourpath/caffe && sh examples/SRGAN/train_srres_75s.sh
    ```
 
-7. Testing SRResNet-MSE:
+6. Testing SRResNet-MSE:
    ``` 
    cd yourpath/caffe/examples/SRGAN/ && python srres-deploy.py 
    ```
 
-8. Training SRGAN-MSE:
+7. Training SRGAN-MSE:
    ```
     cd yourpath/caffe && sh examples/SRGAN/train_srgan_is2.sh 
    ```
 
-9. Testing SRGAN-MSE:
+8. Testing SRGAN-MSE:
    ```
     cd yourpath/caffe/examples/SRGAN/ && python srres-deploy.py 
    ```
