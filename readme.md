@@ -104,6 +104,7 @@ layer{
 
 2. For the GAN parts, the code borrows heavily from ["在caffe 中实现Generative Adversarial Nets（二）"](http://blog.csdn.net/seven_first/article/details/53100325) However , I add some new features to GAN parts. For examples , make gan_mode support the parameter "iter\_size". When your  gan_networks out of memory ,you can set the iter\_sieze : 2 . For more details ,you can refference my srgan_is2\_solver.prototxt and train_srgan_is2.prototxt
 3. For the utils of compute_psnr\_ssim , the code borrows from this link [https://github.com/ShenghaiRong/caffe-vdsr](https://github.com/ShenghaiRong/caffe-vdsr) . But I modified the codes a lot.
+4. Because of the different caffe version, you may have problem when compiling the caffe. If so ,you can just modify the step function in your solver.cpp instead of directly using mine.
 
 ## Plans
 * [x] Finetuning the SRResNet-MSE model.
